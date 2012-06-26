@@ -132,6 +132,9 @@
 		5ABB2E341598FBA900BAFDFE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ABB2E331598FBA900BAFDFE /* AppDelegate.m */; };
 		5ABB2E371598FBA900BAFDFE /* HelloWorldLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ABB2E361598FBA900BAFDFE /* HelloWorldLayer.m */; };
 		5ABB2E451599034B00BAFDFE /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ABB2E441599034B00BAFDFE /* GameScene.m */; };
+		5ABC0092159A53C1005D298A /* circle.png in Resources */ = {isa = PBXBuildFile; fileRef = 5ABC0091159A53C1005D298A /* circle.png */; };
+		5ABC0097159A5B22005D298A /* Sprite.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ABC0094159A5B22005D298A /* Sprite.m */; };
+		5ABC0098159A5B22005D298A /* SpriteGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ABC0096159A5B22005D298A /* SpriteGroup.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -396,6 +399,11 @@
 		5ABB2E361598FBA900BAFDFE /* HelloWorldLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HelloWorldLayer.m; sourceTree = "<group>"; };
 		5ABB2E431599034B00BAFDFE /* GameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameScene.h; path = ../../GameScene.h; sourceTree = "<group>"; };
 		5ABB2E441599034B00BAFDFE /* GameScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GameScene.m; path = ../../GameScene.m; sourceTree = "<group>"; };
+		5ABC0091159A53C1005D298A /* circle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = circle.png; sourceTree = "<group>"; };
+		5ABC0093159A5B22005D298A /* Sprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sprite.h; sourceTree = "<group>"; };
+		5ABC0094159A5B22005D298A /* Sprite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Sprite.m; sourceTree = "<group>"; };
+		5ABC0095159A5B22005D298A /* SpriteGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpriteGroup.h; sourceTree = "<group>"; };
+		5ABC0096159A5B22005D298A /* SpriteGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpriteGroup.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -469,6 +477,7 @@
 		5ABB2CBD1598FBA600BAFDFE /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				5ABC0090159A53A5005D298A /* Game */,
 				5ABB2CBE1598FBA600BAFDFE /* Default.png */,
 				5ABB2CC01598FBA600BAFDFE /* fps_images.png */,
 				5ABB2CC21598FBA600BAFDFE /* fps_images-hd.png */,
@@ -831,10 +840,22 @@
 		5ABB2E46159903B700BAFDFE /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				5ABC0093159A5B22005D298A /* Sprite.h */,
+				5ABC0094159A5B22005D298A /* Sprite.m */,
+				5ABC0095159A5B22005D298A /* SpriteGroup.h */,
+				5ABC0096159A5B22005D298A /* SpriteGroup.m */,
 				5ABB2E431599034B00BAFDFE /* GameScene.h */,
 				5ABB2E441599034B00BAFDFE /* GameScene.m */,
 			);
 			path = Classes;
+			sourceTree = "<group>";
+		};
+		5ABC0090159A53A5005D298A /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				5ABC0091159A53C1005D298A /* circle.png */,
+			);
+			name = Game;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -899,6 +920,7 @@
 				5ABB2CD11598FBA600BAFDFE /* Icon@2x.png in Resources */,
 				5ABB2CD41598FBA600BAFDFE /* iTunesArtwork in Resources */,
 				5ABB2E121598FBA900BAFDFE /* ChangeLog in Resources */,
+				5ABC0092159A53C1005D298A /* circle.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1013,6 +1035,8 @@
 				5ABB2E341598FBA900BAFDFE /* AppDelegate.m in Sources */,
 				5ABB2E371598FBA900BAFDFE /* HelloWorldLayer.m in Sources */,
 				5ABB2E451599034B00BAFDFE /* GameScene.m in Sources */,
+				5ABC0097159A5B22005D298A /* Sprite.m in Sources */,
+				5ABC0098159A5B22005D298A /* SpriteGroup.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1116,6 +1140,7 @@
 				5ABB2E3C1598FBA900BAFDFE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -9,11 +9,12 @@
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
 
+@class SpriteGroup;
+
 @interface GameScene : CCLayer {
-    CGPoint touchPoint;
-    NSMutableArray *touchPoints;
+    SpriteGroup *currentSpriteGroup;
 }
 
-+(CCScene *) scene;
++ (CCScene *) scene;
 
 @end
