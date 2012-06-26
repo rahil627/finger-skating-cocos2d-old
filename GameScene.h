@@ -10,9 +10,11 @@
 #import "cocos2d.h"
 
 @class SpriteGroup;
+@class SpriteGroupGroup;
 
 @interface GameScene : CCLayer {
     SpriteGroup *currentSpriteGroup;
+    SpriteGroupGroup *spriteGroupGroup;
 }
 
 + (CCScene *) scene;

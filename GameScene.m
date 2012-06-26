@@ -9,7 +9,7 @@
 #import "GameScene.h"
 #import "Sprite.h"
 #import "SpriteGroup.h"
-
+#import "SpriteGroupGroup.h"
 
 @implementation GameScene
 
@@ -32,6 +32,9 @@
     CGSize size = [[CCDirector sharedDirector] winSize];
     label.position =  ccp( size.width /2 , size.height/2 );
     [self addChild: label];
+    
+    spriteGroupGroup = [[SpriteGroupGroup spriteGroupGroup] retain];
+    [self addChild:spriteGroupGroup];
     
     [self schedule: @selector(update:)];
     
@@ -92,8 +95,8 @@
     touchPoint = [[CCDirector sharedDirector] convertToGL:touchPoint];
     
     Sprite *sprite = [Sprite spriteWithPosition:touchPoint];
-    
     currentSpriteGroup = [[SpriteGroup spriteGroup] retain];
+    [spriteGroupGroup addChild:currentSpriteGroup];
     [currentSpriteGroup addChild:sprite];
     
     return YES;
@@ -104,12 +107,10 @@
     touchPoint = [[CCDirector sharedDirector] convertToGL:touchPoint];
     
     Sprite *sprite = [Sprite spriteWithPosition:touchPoint];
-    
     [currentSpriteGroup addChild:sprite];
 }
 
 - (void)ccTouchEnded:(UITouch *)touch withEvent:(UIEvent *)event {
-    [self addChild:currentSpriteGroup];
     [currentSpriteGroup release];
 }
 

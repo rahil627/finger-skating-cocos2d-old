@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5ABB0FCC159A779A0091E2B4 /* SpriteGroupGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ABB0FCB159A779A0091E2B4 /* SpriteGroupGroup.m */; };
 		5ABB2CAB1598FBA600BAFDFE /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5ABB2CAA1598FBA600BAFDFE /* QuartzCore.framework */; };
 		5ABB2CAD1598FBA600BAFDFE /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5ABB2CAC1598FBA600BAFDFE /* OpenGLES.framework */; };
 		5ABB2CAF1598FBA600BAFDFE /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5ABB2CAE1598FBA600BAFDFE /* OpenAL.framework */; };
@@ -138,6 +139,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5ABB0FCA159A779A0091E2B4 /* SpriteGroupGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpriteGroupGroup.h; sourceTree = "<group>"; };
+		5ABB0FCB159A779A0091E2B4 /* SpriteGroupGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpriteGroupGroup.m; sourceTree = "<group>"; };
 		5ABB2CA61598FBA600BAFDFE /* Mime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mime.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5ABB2CAA1598FBA600BAFDFE /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		5ABB2CAC1598FBA600BAFDFE /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -462,13 +465,13 @@
 		5ABB2CBC1598FBA600BAFDFE /* Mime */ = {
 			isa = PBXGroup;
 			children = (
-				5ABB2E46159903B700BAFDFE /* Classes */,
 				5ABB2E321598FBA900BAFDFE /* AppDelegate.h */,
-				5ABB2E331598FBA900BAFDFE /* AppDelegate.m */,
 				5ABB2E351598FBA900BAFDFE /* HelloWorldLayer.h */,
+				5ABB2E331598FBA900BAFDFE /* AppDelegate.m */,
 				5ABB2E361598FBA900BAFDFE /* HelloWorldLayer.m */,
-				5ABB2CBD1598FBA600BAFDFE /* Resources */,
+				5ABB2E46159903B700BAFDFE /* Classes */,
 				5ABB2CD51598FBA600BAFDFE /* libs */,
+				5ABB2CBD1598FBA600BAFDFE /* Resources */,
 				5ABB2E2E1598FBA900BAFDFE /* Supporting Files */,
 			);
 			path = Mime;
@@ -840,12 +843,14 @@
 		5ABB2E46159903B700BAFDFE /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				5ABB2E431599034B00BAFDFE /* GameScene.h */,
+				5ABB2E441599034B00BAFDFE /* GameScene.m */,
 				5ABC0093159A5B22005D298A /* Sprite.h */,
 				5ABC0094159A5B22005D298A /* Sprite.m */,
 				5ABC0095159A5B22005D298A /* SpriteGroup.h */,
 				5ABC0096159A5B22005D298A /* SpriteGroup.m */,
-				5ABB2E431599034B00BAFDFE /* GameScene.h */,
-				5ABB2E441599034B00BAFDFE /* GameScene.m */,
+				5ABB0FCA159A779A0091E2B4 /* SpriteGroupGroup.h */,
+				5ABB0FCB159A779A0091E2B4 /* SpriteGroupGroup.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -1037,6 +1042,7 @@
 				5ABB2E451599034B00BAFDFE /* GameScene.m in Sources */,
 				5ABC0097159A5B22005D298A /* Sprite.m in Sources */,
 				5ABC0098159A5B22005D298A /* SpriteGroup.m in Sources */,
+				5ABB0FCC159A779A0091E2B4 /* SpriteGroupGroup.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
