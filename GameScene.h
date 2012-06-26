@@ -11,6 +11,7 @@
 
 @interface GameScene : CCLayer {
     CGPoint touchPoint;
+    NSMutableArray *touchPoints;
 }
 
 +(CCScene *) scene;

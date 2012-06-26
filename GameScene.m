@@ -25,6 +25,7 @@
     
     [self setIsTouchEnabled:YES];
     touchPoint = CGPointZero;
+    touchPoints = [[NSMutableArray array] retain];
     
     CCLabelTTF *label = [CCLabelTTF labelWithString:@"Hello World" fontName:@"Marker Felt" fontSize:64];
     CGSize size = [[CCDirector sharedDirector] winSize];
@@ -47,6 +48,7 @@
 }
 
 - (void) dealloc {
+    [touchPoints release];
 	[super dealloc];
 }
 
@@ -61,34 +63,40 @@
     touchPoint = [touch locationInView:[touch view]];
     touchPoint = [[CCDirector sharedDirector] convertToGL:touchPoint];
     
+    [touchPoints addObject:[NSValue valueWithCGPoint:touchPoint]];
+    
     return YES;
 }
 
 - (void)ccTouchMoved:(UITouch *)touch withEvent:(UIEvent *)event {
     touchPoint = [touch locationInView:[touch view]];
     touchPoint = [[CCDirector sharedDirector] convertToGL:touchPoint];
-    //}
+    
+    [touchPoints addObject:[NSValue valueWithCGPoint:touchPoint]];
 }
 
 - (void)ccTouchEnded:(UITouch *)touch withEvent:(UIEvent *)event {
-    touchPoint = CGPointZero;
+    // do stuff
 }
 
 - (void)ccTouchCancelled:(UITouch *)touch withEvent:(UIEvent *)event {
 	// do stuff
 }
 
-- (void) draw {
-	if ((touchPoint.x == 0 && touchPoint.y == 0))
-        return;
-    
+- (void) draw {    
     //ccDrawColor4B(0, 0, 0, 255); // openGL ES 2.0 is crazy, don't look inside!
     //ccDrawCircle(touchPoint, 10, CC_DEGREES_TO_RADIANS(90), 40, NO); // no draw color filled circle function in CCDrawingPrimitives =(
     
     // rectangles are cool too, right?
-    CGPoint p1 = ccp(touchPoint.x - 5, touchPoint.y - 5);
-    CGPoint p2 = ccp(touchPoint.x + 5, touchPoint.y + 5);
-    ccDrawSolidRect(p1, p2, ccc4f(1, 1, 0, 1)); // drawing white doesn't work?
+    
+    for (int i; i < [touchPoints count]; i++) {
+        CGPoint tp = [[touchPoints objectAtIndex:i] CGPointValue];
+        
+        CGPoint p1 = ccp(tp.x - 5, tp.y - 5);
+        CGPoint p2 = ccp(tp.x + 5, tp.y + 5);
+        ccDrawSolidRect(p1, p2, ccc4f(1, 1, 0, 1)); // drawing white doesn't work?
+    }
+    
 }
 
 @end
