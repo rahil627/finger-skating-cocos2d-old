@@ -131,6 +131,7 @@
 		5ABB2E311598FBA900BAFDFE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ABB2E301598FBA900BAFDFE /* main.m */; };
 		5ABB2E341598FBA900BAFDFE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ABB2E331598FBA900BAFDFE /* AppDelegate.m */; };
 		5ABB2E371598FBA900BAFDFE /* HelloWorldLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ABB2E361598FBA900BAFDFE /* HelloWorldLayer.m */; };
+		5ABB2E451599034B00BAFDFE /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ABB2E441599034B00BAFDFE /* GameScene.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -393,6 +394,8 @@
 		5ABB2E331598FBA900BAFDFE /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		5ABB2E351598FBA900BAFDFE /* HelloWorldLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HelloWorldLayer.h; sourceTree = "<group>"; };
 		5ABB2E361598FBA900BAFDFE /* HelloWorldLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HelloWorldLayer.m; sourceTree = "<group>"; };
+		5ABB2E431599034B00BAFDFE /* GameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameScene.h; path = ../../GameScene.h; sourceTree = "<group>"; };
+		5ABB2E441599034B00BAFDFE /* GameScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GameScene.m; path = ../../GameScene.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -451,6 +454,7 @@
 		5ABB2CBC1598FBA600BAFDFE /* Mime */ = {
 			isa = PBXGroup;
 			children = (
+				5ABB2E46159903B700BAFDFE /* Classes */,
 				5ABB2E321598FBA900BAFDFE /* AppDelegate.h */,
 				5ABB2E331598FBA900BAFDFE /* AppDelegate.m */,
 				5ABB2E351598FBA900BAFDFE /* HelloWorldLayer.h */,
@@ -824,6 +828,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		5ABB2E46159903B700BAFDFE /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				5ABB2E431599034B00BAFDFE /* GameScene.h */,
+				5ABB2E441599034B00BAFDFE /* GameScene.m */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -999,6 +1012,7 @@
 				5ABB2E311598FBA900BAFDFE /* main.m in Sources */,
 				5ABB2E341598FBA900BAFDFE /* AppDelegate.m in Sources */,
 				5ABB2E371598FBA900BAFDFE /* HelloWorldLayer.m in Sources */,
+				5ABB2E451599034B00BAFDFE /* GameScene.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
