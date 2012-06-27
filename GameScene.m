@@ -31,6 +31,15 @@
     spriteGroupGroup = [[SpriteGroupGroup spriteGroupGroup] retain];
     [self addChild:spriteGroupGroup];
     
+    CGSize ws = [[CCDirector sharedDirector] winSize];
+    CGRect bottomTouchAreaRectangle = CGRectMake(50, 0, ws.width, 50);
+    bottomTouchArea = [CCSprite spriteWithFile:@"white.png" rect:bottomTouchAreaRectangle];
+    bottomTouchArea.color = ccc3(0, 255, 255);
+    bottomTouchArea.opacity = 255/2;
+    bottomTouchArea.position = ccp(ws.width/2, 25);
+    [self addChild:bottomTouchArea z:10];
+    
+    
     [self schedule: @selector(update:)];
     
     return self;
@@ -56,13 +65,12 @@
 }
 
 #pragma mark - touch handlers
+// create points
 - (BOOL)ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event {    
     CGPoint touchPoint = [touch locationInView:[touch view]];
     touchPoint = [[CCDirector sharedDirector] convertToGL:touchPoint];
     
-    CGSize ws = [[CCDirector sharedDirector] winSize];
-    CGRect r = CGRectMake(50, 0, ws.width, 50);
-    if (!(CGRectContainsPoint(r, touchPoint)))
+    if (!(CGRectContainsPoint(bottomTouchArea.textureRect, touchPoint)))
         return NO;
     //return CGRectContainsPoint(r, [self convertTouchToNodeSpaceAR:touch]); //self.textureRect wasn't working correctly
     

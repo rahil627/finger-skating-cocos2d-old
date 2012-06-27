@@ -15,6 +15,7 @@
 @interface GameScene : CCLayer {
     SpriteGroup *currentSpriteGroup;
     SpriteGroupGroup *spriteGroupGroup;
+    CCSprite *bottomTouchArea;
 }
 
 + (CCScene *) scene;
