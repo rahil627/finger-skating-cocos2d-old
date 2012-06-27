@@ -10,7 +10,7 @@
 #import "cocos2d.h"
 
 @interface SpriteGroup: CCNode {
-    
+    ccColor4F lineColor;
 }
 
 + (id)spriteGroup;

@@ -129,7 +129,6 @@ void ccDrawLine( CGPoint origin, CGPoint destination )
 	[shader_ setUniformLocation:colorLocation_ with4fv:(GLfloat*) &color_.r count:1];
 
 	ccGLEnableVertexAttribs( kCCVertexAttribFlag_Position );
-    glLineWidth(25.0f); // todo: edited cocos2d!
 	glVertexAttribPointer(kCCVertexAttrib_Position, 2, GL_FLOAT, GL_FALSE, 0, vertices);
 	glDrawArrays(GL_LINES, 0, 2);
 	

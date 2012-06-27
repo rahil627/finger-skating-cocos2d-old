@@ -43,22 +43,6 @@
     
 }
 
-//- (void) draw {
-//    ccDrawColor4B(0, 0, 0, 255); // openGL ES 2.0 is crazy, don't look inside!
-//    ccDrawCircle(touchPoint, 10, CC_DEGREES_TO_RADIANS(90), 40, NO); // no draw color filled circle function in CCDrawingPrimitives =(
-//
-//    // rectangles are cool too, right?
-//
-//        for (int i = 0; i < [touchPoints count]; i++) {
-//            CGPoint tp = [[touchPoints objectAtIndex:i] CGPointValue];
-//            
-//            CGPoint p1 = ccp(tp.x - 25, tp.y - 25);
-//            CGPoint p2 = ccp(tp.x + 25, tp.y + 25);
-//            ccDrawSolidRect(p1, p2, ccc4f(1, 1, 0, 1)); // drawing white doesn't work?
-//        }
-//    
-//}
-
 #pragma mark - touch handlers
 - (BOOL)ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event {
     return YES;

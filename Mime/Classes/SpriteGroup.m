@@ -19,6 +19,8 @@
 	if (!(self = [super init]))
 		return nil;
     
+    lineColor = ccc4f(CCRANDOM_0_1(), CCRANDOM_0_1(), CCRANDOM_0_1(), 1);
+    
     return self;
 }
 
@@ -26,6 +28,10 @@
     // draw a line between each sprite
     if ([[self children] count] < 2)
         return;
+    
+    // todo: changing color requires a bit of work in OpenGL 2
+    ccDrawColor4F(lineColor.r, lineColor.g, lineColor.b, lineColor.a);
+    glLineWidth(25.0f);
     
     for (int i = 0; i < [[self children] count] - 1; i++) {
         CGPoint p1 = ((CCNode*)[[self children] objectAtIndex:i]).position;
