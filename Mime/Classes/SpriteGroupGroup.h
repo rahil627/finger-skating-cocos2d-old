@@ -14,5 +14,6 @@
 }
 
 + (id)spriteGroupGroup;
+//- (void)removeOffScreenSpriteGroups;
 
 @end

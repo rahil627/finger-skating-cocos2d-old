@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5ABB0FCC159A779A0091E2B4 /* SpriteGroupGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ABB0FCB159A779A0091E2B4 /* SpriteGroupGroup.m */; };
+		5ABB0FD2159ABD900091E2B4 /* Library.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ABB0FD1159ABD900091E2B4 /* Library.m */; };
 		5ABB2CAB1598FBA600BAFDFE /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5ABB2CAA1598FBA600BAFDFE /* QuartzCore.framework */; };
 		5ABB2CAD1598FBA600BAFDFE /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5ABB2CAC1598FBA600BAFDFE /* OpenGLES.framework */; };
 		5ABB2CAF1598FBA600BAFDFE /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5ABB2CAE1598FBA600BAFDFE /* OpenAL.framework */; };
@@ -141,6 +142,8 @@
 /* Begin PBXFileReference section */
 		5ABB0FCA159A779A0091E2B4 /* SpriteGroupGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpriteGroupGroup.h; sourceTree = "<group>"; };
 		5ABB0FCB159A779A0091E2B4 /* SpriteGroupGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpriteGroupGroup.m; sourceTree = "<group>"; };
+		5ABB0FD0159ABD900091E2B4 /* Library.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Library.h; sourceTree = "<group>"; };
+		5ABB0FD1159ABD900091E2B4 /* Library.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Library.m; sourceTree = "<group>"; };
 		5ABB2CA61598FBA600BAFDFE /* Mime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mime.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5ABB2CAA1598FBA600BAFDFE /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		5ABB2CAC1598FBA600BAFDFE /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -851,6 +854,8 @@
 				5ABC0096159A5B22005D298A /* SpriteGroup.m */,
 				5ABB0FCA159A779A0091E2B4 /* SpriteGroupGroup.h */,
 				5ABB0FCB159A779A0091E2B4 /* SpriteGroupGroup.m */,
+				5ABB0FD0159ABD900091E2B4 /* Library.h */,
+				5ABB0FD1159ABD900091E2B4 /* Library.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -1043,6 +1048,7 @@
 				5ABC0097159A5B22005D298A /* Sprite.m in Sources */,
 				5ABC0098159A5B22005D298A /* SpriteGroup.m in Sources */,
 				5ABB0FCC159A779A0091E2B4 /* SpriteGroupGroup.m in Sources */,
+				5ABB0FD2159ABD900091E2B4 /* Library.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
