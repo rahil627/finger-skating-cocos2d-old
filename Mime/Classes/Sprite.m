@@ -8,6 +8,7 @@
 
 #import "Sprite.h"
 #import "Library.h"
+#import "GameManager.h"
 
 @implementation Sprite
 
@@ -17,13 +18,12 @@
 }
 
 - (id)spriteWithPosition:(CGPoint)position {
-	if (!(self = [super initWithFile:@"circle.png"])) // todo: optimize: use OpenGL to draw a circle
+	if (!(self = [super initWithFile:@"circle.png"])) // todo: optimize: use OpenGL to draw a circle, [CCSprite node] gave error 
 		return nil;
     
     [self setPosition:position];
     
-    // random color circle
-    [self setColor:ccc3(CCRANDOM_0_1() * 230 + 25, CCRANDOM_0_1() * 230 + 25, CCRANDOM_0_1() * 230 + 25)];
+    hitbox = CGRectMake(0, 0, 25, 25);
     
     [self schedule: @selector(update:)];
     
@@ -32,7 +32,7 @@
 
 - (void)update:(ccTime)dt {
     // move up
-    self.position = ccp(self.position.x, self.position.y + 1);
+    self.position = ccp(self.position.x, self.position.y + POINT_MOVE_SPEED * dt * FRAME_RATE);
     
     // if off screen, remove
     if ([Library isOffScreenWithCCSprite:self])
@@ -43,18 +43,10 @@
     
 }
 
-#pragma mark - touch handlers
-- (BOOL)ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event {
-    return YES;
-}
-- (void)ccTouchMoved:(UITouch *)touch withEvent:(UIEvent *)event {
-    
-}
-- (void)ccTouchEnded:(UITouch *)touch withEvent:(UIEvent *)event {
-    
-}
-- (void)ccTouchCancelled:(UITouch *)touch withEvent:(UIEvent *)event {
-    
+- (void)draw {
+    ccDrawColor4F(1, 1, 1, 1);
+    // todo: need to get negate the difference between touch point and creation point
+    ccDrawPoint([self convertToNodeSpaceAR:self.position]);
 }
 
 @end

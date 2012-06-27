@@ -35,7 +35,7 @@
     CGRect bottomTouchAreaRectangle = CGRectMake(50, 0, ws.width, 50);
     bottomTouchArea = [CCSprite spriteWithFile:@"white.png" rect:bottomTouchAreaRectangle];
     bottomTouchArea.color = ccc3(0, 255, 255);
-    bottomTouchArea.opacity = 255/2;
+    bottomTouchArea.opacity = 255/4;
     bottomTouchArea.position = ccp(ws.width/2, 25);
     [self addChild:bottomTouchArea z:10];
     

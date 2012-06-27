@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
 
-@interface SpriteGroup: CCNode {
+@interface SpriteGroup: CCNode <CCTargetedTouchDelegate> {
     ccColor4F lineColor;
 }
 

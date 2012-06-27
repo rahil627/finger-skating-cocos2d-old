@@ -9,8 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
 
-@interface Sprite : CCSprite <CCTargetedTouchDelegate> {
-    
+@interface Sprite : CCSprite {
+    CGRect hitbox;
 }
 
 + (id)spriteWithPosition:(CGPoint)position;

@@ -92,6 +92,10 @@ void ccDrawSolidPoly( const CGPoint *poli, NSUInteger numberOfPoints, ccColor4F 
 /** draws a circle given the center, radius and number of segments measured in points */
 void ccDrawCircle( CGPoint center, float radius, float angle, NSUInteger segments, BOOL drawLineToCenter);
 
+// todo: reminder: i added this function!
+/** draws a solid circle given the center, radius and number of segments measured in points */
+void ccDrawSolidCircle( CGPoint center, float radius, float angle, NSUInteger segments, BOOL drawLineToCenter);
+
 /** draws a quad bezier path measured in points.
  @warning This function could be pretty slow. Use it only for debugging purposes.
  @since v0.8
