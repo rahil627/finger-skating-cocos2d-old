@@ -79,7 +79,7 @@
     
     // if line
     
-    // if touching first node
+    // if touch began on first node
     for (int i = 0; i < [[self children] count]; i++) {
         Node* n = (Node*)[[self children] objectAtIndex:i];
         
@@ -92,8 +92,6 @@
                 return YES;
             }
         }
-        
-
     }
     
     return NO; // claim touch?
@@ -113,10 +111,24 @@
     //CCLOG(@"stop touching me!");
     //[self removeFromParentAndCleanup:YES];
     
-    // TODO: STOPPED HERE
+    // if touch is within the current node's hitbox or the current space between two nodes
+    
     
 }
 - (void)ccTouchEnded:(UITouch *)touch withEvent:(UIEvent *)event {
+    
+    // if touch ended on last node
+    for (int i = 0; i < [[self children] count]; i++) {
+        Node* n = (Node*)[[self children] objectAtIndex:i];
+        
+        if (n.type == kLast) { // todo: optimize: just access the last child
+            CGRect hitbox = CGRectMake(n.position.x - 25/2, n.position.y - 25/2, 25, 25);
+            
+            if ((CGRectContainsPoint(hitbox, [self convertTouchToNodeSpaceAR:touch]))) {
+                CCLOG(@"successfully ended touch on last node");
+            }
+        }
+    }
     
 }
 - (void)ccTouchCancelled:(UITouch *)touch withEvent:(UIEvent *)event {

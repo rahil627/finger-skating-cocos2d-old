@@ -27,6 +27,7 @@
         return nil;
     
     [self setIsTouchEnabled:YES];
+    //[[CCDirector sharedDirector] setAnimationInterval:1/240.0]; // todo: testing
     
     nodeSuperGroup = [[NodeSuperGroup nodeSuperGroup] retain];
     [self addChild:nodeSuperGroup];

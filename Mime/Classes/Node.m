@@ -39,7 +39,7 @@
     if ([Library isOffScreenWithPoint:self.position])
         [self removeFromParentAndCleanup:YES];
     
-    // if matched, remove
+    // todo: if matched, remove
     
     
 }
@@ -50,7 +50,8 @@
     switch (type) {
         case kMiddle:
             ccDrawColor4F(1, 1, 1, 1);
-            ccDrawPoint(p);
+            p = ccp(p.x - 10/4, p.y - 10/4);
+            ccDrawSolidCircle(p, 10/2, 90, 50, NO);
             break;
             
         case kFirst:
