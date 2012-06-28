@@ -9,12 +9,12 @@
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
 
-@class SpriteGroup;
-@class SpriteGroupGroup;
+@class NodeGroup;
+@class NodeSuperGroup;
 
 @interface GameScene : CCLayer {
-    SpriteGroup *currentSpriteGroup;
-    SpriteGroupGroup *spriteGroupGroup;
+    NodeGroup *currentNodeGroup;
+    NodeSuperGroup *nodeSuperGroup;
     CCSprite *bottomTouchArea;
 }
 

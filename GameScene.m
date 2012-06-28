@@ -7,9 +7,9 @@
 //
 
 #import "GameScene.h"
-#import "Sprite.h"
-#import "SpriteGroup.h"
-#import "SpriteGroupGroup.h"
+#import "Node.h"
+#import "NodeGroup.h"
+#import "NodeSuperGroup.h"
 
 @implementation GameScene
 
@@ -28,16 +28,22 @@
     
     [self setIsTouchEnabled:YES];
     
-    spriteGroupGroup = [[SpriteGroupGroup spriteGroupGroup] retain];
-    [self addChild:spriteGroupGroup];
+    nodeSuperGroup = [[NodeSuperGroup nodeSuperGroup] retain];
+    [self addChild:nodeSuperGroup];
     
     CGSize ws = [[CCDirector sharedDirector] winSize];
-    CGRect bottomTouchAreaRectangle = CGRectMake(50, 0, ws.width, 50);
+    CGRect bottomTouchAreaRectangle = CGRectMake(0, 0, ws.width, 50);
     bottomTouchArea = [CCSprite spriteWithFile:@"white.png" rect:bottomTouchAreaRectangle];
-    bottomTouchArea.color = ccc3(0, 255, 255);
+    bottomTouchArea.color = ccc3(0, 255, 0);
     bottomTouchArea.opacity = 255/4;
-    bottomTouchArea.position = ccp(ws.width/2, 25);
+    bottomTouchArea.position = ccp(bottomTouchArea.contentSize.width/2, bottomTouchArea.contentSize.height/2);
     [self addChild:bottomTouchArea z:10];
+    
+    CGRect bottomCreationLineRect = CGRectMake(0, 0, ws.width, 5);
+    CCSprite *bottomCreationLine = [CCSprite spriteWithFile:@"white.png" rect:bottomCreationLineRect];
+    bottomCreationLine.color = ccc3(255, 0, 0);
+    bottomCreationLine.position = ccp(bottomCreationLine.contentSize.width/2, bottomCreationLine.contentSize.height/2 + 45);
+    [self addChild:bottomCreationLine z:10];
     
     
     [self schedule: @selector(update:)];
@@ -74,10 +80,11 @@
         return NO;
     //return CGRectContainsPoint(r, [self convertTouchToNodeSpaceAR:touch]); //self.textureRect wasn't working correctly
     
-    Sprite *sprite = [Sprite spriteWithPosition:touchPoint];
-    currentSpriteGroup = [[SpriteGroup spriteGroup] retain];
-    [spriteGroupGroup addChild:currentSpriteGroup];
-    [currentSpriteGroup addChild:sprite];
+    Node *node = [Node node];
+    node.position = touchPoint;
+    currentNodeGroup = [[NodeGroup nodeGroup] retain];
+    [nodeSuperGroup addChild:currentNodeGroup];
+    [currentNodeGroup addChild:node];
     
     return YES;
 }
@@ -86,12 +93,13 @@
     CGPoint touchPoint = [touch locationInView:[touch view]];
     touchPoint = [[CCDirector sharedDirector] convertToGL:touchPoint];
     
-    Sprite *sprite = [Sprite spriteWithPosition:ccp(touchPoint.x, 50)];
-    [currentSpriteGroup addChild:sprite];
+    Node *node = [Node node];
+    node.position = ccp(touchPoint.x, 50);
+    [currentNodeGroup addChild:node];
 }
 
 - (void)ccTouchEnded:(UITouch *)touch withEvent:(UIEvent *)event {
-    [currentSpriteGroup release];
+    [currentNodeGroup release];
 }
 
 - (void)ccTouchCancelled:(UITouch *)touch withEvent:(UIEvent *)event {

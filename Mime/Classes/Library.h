@@ -11,6 +11,7 @@
 
 @interface Library : NSObject
 
++ (BOOL)isOffScreenWithPoint:(CGPoint)p;
 + (BOOL)isOffScreenWithCCSprite:(CCSprite*)sprite;
 
 @end

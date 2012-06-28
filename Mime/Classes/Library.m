@@ -10,6 +10,14 @@
 
 @implementation Library
 
++ (BOOL)isOffScreenWithPoint:(CGPoint)p  {
+    CGSize s = [[CCDirector sharedDirector] winSize];
+    
+    if (p.x < 0 || p.x > s.width || p.y < 0 || p.y > s.height)
+        return true;
+    return false;
+}
+
 + (BOOL)isOffScreenWithCCSprite:(CCSprite*)sprite  {
     CGPoint sgp = sprite.position;
     CGSize sgs = sprite.contentSize;
