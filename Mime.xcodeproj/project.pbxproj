@@ -143,7 +143,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		5ABB0FCA159A779A0091E2B4 /* NodeSuperGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; path = NodeSuperGroup.h; sourceTree = "<group>"; };
+		5ABB0FCA159A779A0091E2B4 /* NodeSuperGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NodeSuperGroup.h; sourceTree = "<group>"; };
 		5ABB0FCB159A779A0091E2B4 /* NodeSuperGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NodeSuperGroup.m; sourceTree = "<group>"; };
 		5ABB0FD0159ABD900091E2B4 /* Library.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Library.h; sourceTree = "<group>"; };
 		5ABB0FD1159ABD900091E2B4 /* Library.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Library.m; sourceTree = "<group>"; };
@@ -411,7 +411,7 @@
 		5ABB2E431599034B00BAFDFE /* GameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameScene.h; path = ../../GameScene.h; sourceTree = "<group>"; };
 		5ABB2E441599034B00BAFDFE /* GameScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GameScene.m; path = ../../GameScene.m; sourceTree = "<group>"; };
 		5ABC0091159A53C1005D298A /* circle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = circle.png; path = ../../circle.png; sourceTree = "<group>"; };
-		5ABC0095159A5B22005D298A /* NodeGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; path = NodeGroup.h; sourceTree = "<group>"; };
+		5ABC0095159A5B22005D298A /* NodeGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NodeGroup.h; sourceTree = "<group>"; };
 		5ABC0096159A5B22005D298A /* NodeGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NodeGroup.m; sourceTree = "<group>"; };
 		5ABD6DC9159B8F9E0097993D /* GameManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameManager.h; sourceTree = "<group>"; };
 		5ABD6DCA159B8F9E0097993D /* GameManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameManager.m; sourceTree = "<group>"; };
@@ -487,10 +487,10 @@
 			isa = PBXGroup;
 			children = (
 				5ABB2E321598FBA900BAFDFE /* AppDelegate.h */,
-				5ABB2E351598FBA900BAFDFE /* HelloWorldLayer.h */,
 				5ABB2E331598FBA900BAFDFE /* AppDelegate.m */,
-				5ABB2E361598FBA900BAFDFE /* HelloWorldLayer.m */,
 				5ABB2E46159903B700BAFDFE /* Classes */,
+				5ABB2E351598FBA900BAFDFE /* HelloWorldLayer.h */,
+				5ABB2E361598FBA900BAFDFE /* HelloWorldLayer.m */,
 				5ABB2CD51598FBA600BAFDFE /* libs */,
 				5ABB2CBD1598FBA600BAFDFE /* Resources */,
 				5ABB2E2E1598FBA900BAFDFE /* Supporting Files */,
@@ -864,18 +864,18 @@
 		5ABB2E46159903B700BAFDFE /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				5ABD6DD1159BEFEF0097993D /* Node.h */,
-				5ABD6DD2159BEFEF0097993D /* Node.m */,
+				5ABD6DC9159B8F9E0097993D /* GameManager.h */,
+				5ABD6DCA159B8F9E0097993D /* GameManager.m */,
 				5ABB2E431599034B00BAFDFE /* GameScene.h */,
 				5ABB2E441599034B00BAFDFE /* GameScene.m */,
+				5ABB0FD0159ABD900091E2B4 /* Library.h */,
+				5ABB0FD1159ABD900091E2B4 /* Library.m */,
+				5ABD6DD1159BEFEF0097993D /* Node.h */,
+				5ABD6DD2159BEFEF0097993D /* Node.m */,
 				5ABC0095159A5B22005D298A /* NodeGroup.h */,
 				5ABC0096159A5B22005D298A /* NodeGroup.m */,
 				5ABB0FCA159A779A0091E2B4 /* NodeSuperGroup.h */,
 				5ABB0FCB159A779A0091E2B4 /* NodeSuperGroup.m */,
-				5ABB0FD0159ABD900091E2B4 /* Library.h */,
-				5ABB0FD1159ABD900091E2B4 /* Library.m */,
-				5ABD6DC9159B8F9E0097993D /* GameManager.h */,
-				5ABD6DCA159B8F9E0097993D /* GameManager.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";

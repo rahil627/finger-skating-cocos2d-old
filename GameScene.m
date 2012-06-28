@@ -81,6 +81,7 @@
     //return CGRectContainsPoint(r, [self convertTouchToNodeSpaceAR:touch]); //self.textureRect wasn't working correctly
     
     Node *node = [Node node];
+    node.type = kFirst;
     node.position = touchPoint;
     currentNodeGroup = [[NodeGroup nodeGroup] retain];
     [nodeSuperGroup addChild:currentNodeGroup];
@@ -94,11 +95,14 @@
     touchPoint = [[CCDirector sharedDirector] convertToGL:touchPoint];
     
     Node *node = [Node node];
+    node.type = kMiddle;
     node.position = ccp(touchPoint.x, 50);
     [currentNodeGroup addChild:node];
 }
 
 - (void)ccTouchEnded:(UITouch *)touch withEvent:(UIEvent *)event {
+    NSInteger lastNodeIndex = [[currentNodeGroup children] count] - 1;
+    ((Node *)[[currentNodeGroup children] objectAtIndex:lastNodeIndex]).type = kLast;
     [currentNodeGroup release];
 }
 

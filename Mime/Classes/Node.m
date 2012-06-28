@@ -12,7 +12,7 @@
 
 @implementation Node
 
-@synthesize hitbox;
+@synthesize hitbox, type;
 
 #pragma mark - overridden functions
 + (id)node {
@@ -24,6 +24,7 @@
 		return nil;
     
     hitbox = CGRectMake(0, 0, 25, 25);
+    type = -1;
     
     [self schedule: @selector(update:)];
     
@@ -44,9 +45,30 @@
 }
 
 - (void)draw {
-    ccDrawColor4F(1, 1, 1, 1);
-    // todo: need to get negate the difference between touch point and creation point
-    ccDrawPoint([self convertToNodeSpaceAR:self.position]);
+    CGPoint p = [self convertToNodeSpaceAR:self.position];
+    
+    switch (type) {
+        case kMiddle:
+            ccDrawColor4F(1, 1, 1, 1);
+            ccDrawPoint(p);
+            break;
+            
+        case kFirst:
+            ccDrawColor4F(0, 1, 0, 1);
+            p = ccp(p.x - 25/4, p.y - 25/4);
+            ccDrawSolidCircle(p, 25/2, 90, 50, NO);
+            break;
+            
+        case kLast:
+            ccDrawColor4F(1, 0, 0, 1);
+            p = ccp(p.x - 25/4, p.y - 25/4);
+            ccDrawSolidCircle(p, 25/2, 90, 50, NO);
+            break;
+            
+        default:
+            CCLOGWARN(@"[Node draw] you forgot to set the node type!");
+            break;
+    }
 }
 
 @end

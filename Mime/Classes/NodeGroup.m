@@ -7,6 +7,7 @@
 //
 
 #import "NodeGroup.h"
+#import "Node.h"
 
 @implementation NodeGroup
 
@@ -74,20 +75,25 @@
     //CCLOG(@"hitbox: (%f, %f)", hitbox.origin.x, hitbox.origin.y);
     //CCLOG(@"nodespace (%f, %f), nodespaceAR (%f, %f)", [self convertTouchToNodeSpace:touch].x, [self convertTouchToNodeSpace:touch].y,[self convertTouchToNodeSpaceAR:touch].x, [self convertTouchToNodeSpaceAR:touch].y);
     
-    // if touching point
+    // if single
+    
+    // if line
+    
+    // if touching first node
     for (int i = 0; i < [[self children] count]; i++) {
-        // if touching first point
+        Node* n = (Node*)[[self children] objectAtIndex:i];
         
-        
-        CCNode* p = (CCNode*)[[self children] objectAtIndex:i];
-        CGRect hitbox = CGRectMake(p.position.x - 25/2, p.position.y - 25/2, 25, 25);
-        
-        //CCLOG(@"hitbox: (%f, %f)", hitbox.origin.x, hitbox.origin.y);
-        
-        if ((CGRectContainsPoint(hitbox, [self convertTouchToNodeSpaceAR:touch]))) {
-            CCLOG(@"stop touching me!");
-            [self removeFromParentAndCleanup:YES];
+        if (n.type == kFirst) { // todo: optimize: just access the first child
+            CGRect hitbox = CGRectMake(n.position.x - 25/2, n.position.y - 25/2, 25, 25);
+            
+            if ((CGRectContainsPoint(hitbox, [self convertTouchToNodeSpaceAR:touch]))) {
+                CCLOG(@"first point touched!");
+                //[self removeFromParentAndCleanup:YES]; // if missed beginning point, change color
+                return YES;
+            }
         }
+        
+
     }
     
     return NO; // claim touch?
@@ -106,6 +112,8 @@
     
     //CCLOG(@"stop touching me!");
     //[self removeFromParentAndCleanup:YES];
+    
+    // TODO: STOPPED HERE
     
 }
 - (void)ccTouchEnded:(UITouch *)touch withEvent:(UIEvent *)event {
