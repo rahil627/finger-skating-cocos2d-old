@@ -16,5 +16,5 @@
 + (BOOL)isOffScreenWithCCSprite:(CCSprite*)sprite;
 
 // C functions
-+ (int)IsPointInPolygonWithNumberOfVerticies:(int)nvert xVerticies:(float *)vertx yVerticies:(float *)verty testPointX:(float)testx testPointY:(float)testy;
++ (int)isPointInPolygonWithNumberOfVerticies:(int)nvert xVerticies:(float *)vertx yVerticies:(float *)verty testPointX:(float)testx testPointY:(float)testy;
 @end

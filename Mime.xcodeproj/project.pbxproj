@@ -864,8 +864,6 @@
 		5ABB2E46159903B700BAFDFE /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				5ABB9F9D159EF01200E4C2C1 /* NodeGroup.h */,
-				5ABB9F9E159EF01200E4C2C1 /* NodeGroup.m */,
 				5ABD6DC9159B8F9E0097993D /* GameManager.h */,
 				5ABD6DCA159B8F9E0097993D /* GameManager.m */,
 				5ABB2E431599034B00BAFDFE /* GameScene.h */,
@@ -874,6 +872,8 @@
 				5ABB0FD1159ABD900091E2B4 /* Library.m */,
 				5ABD6DD1159BEFEF0097993D /* Node.h */,
 				5ABD6DD2159BEFEF0097993D /* Node.m */,
+				5ABB9F9D159EF01200E4C2C1 /* NodeGroup.h */,
+				5ABB9F9E159EF01200E4C2C1 /* NodeGroup.m */,
 				5ABB0FCA159A779A0091E2B4 /* NodeSuperGroup.h */,
 				5ABB0FCB159A779A0091E2B4 /* NodeSuperGroup.m */,
 			);

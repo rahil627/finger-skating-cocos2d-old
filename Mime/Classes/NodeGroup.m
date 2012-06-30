@@ -212,25 +212,31 @@
         p1 = ((CCNode*)[[self children] objectAtIndex:i]).position;
         p2 = ((CCNode*)[[self children] objectAtIndex:i + 1]).position;
         
-        //ccDrawLine(p1, p2);
         [self getRectangleVerticesWithPoint:p1 point2:p2 arrayToStoreIn:v];
-        
-        
-        x[0] = v[0].x;
-        x[1] = v[1].x;
-        x[2] = v[2].x;
-        x[3] = v[3].x;
-        
-        y[0] = v[0].y;
-        y[1] = v[1].y;
-        y[2] = v[2].y;
-        y[3] = v[3].y;
-        
-        [Library IsPointInPolygonWithNumberOfVerticies:4 xVerticies:x yVerticies:y testPointX:touchPoint.x testPointY:touchPoint.y];
+        if ([self isPointInRectangleWithVertices:v point:touchPoint])
+            return;
     }
     
     CCLOG(@"you lose, good day sir!");
 }
+
+- (BOOL)isPointInRectangleWithVertices:(CGPoint *)v point:(CGPoint)p {
+    
+    float x[4], y[4];
+    
+    x[0] = v[0].x;
+    x[1] = v[1].x;
+    x[2] = v[2].x;
+    x[3] = v[3].x;
+    
+    y[0] = v[0].y;
+    y[1] = v[1].y;
+    y[2] = v[2].y;
+    y[3] = v[3].y;
+    
+    return [Library isPointInPolygonWithNumberOfVerticies:4 xVerticies:x yVerticies:y testPointX:p.x testPointY:p.y]; // BOOL == int?
+}
+
 - (void)ccTouchEnded:(UITouch *)touch withEvent:(UIEvent *)event {
     
     // if touch ended on last node
