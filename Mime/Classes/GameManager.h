@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
+#define IS_DEBUGGING 1
 #define FRAME_RATE 60.0f
 #define POINT_MOVE_SPEED 4.0f
 #define NODE_SIZE 100.0f

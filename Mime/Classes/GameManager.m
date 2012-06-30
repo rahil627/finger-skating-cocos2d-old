@@ -37,10 +37,10 @@ static GameManager* _sharedGameManager = nil;
 }
 
 -(id)init {
-	self = [super init];
-	if (self != nil) {
-		// initialize stuff here
-	}
+	if(!(self=[super init]))
+		return nil;
+    
+    // init stuff here
     
 	return self;
 }

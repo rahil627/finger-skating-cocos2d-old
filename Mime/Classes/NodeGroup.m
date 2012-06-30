@@ -43,89 +43,81 @@
     //glLineWidth(NODE_SIZE);
     
     //GLfloat v;
-    //glGetFloatv(GL_ALIASED_LINE_WIDTH_RANGE, &v); // returns 1
+    //glGetFloatv(GL_ALIASED_LINE_WIDTH_RANGE, &v); // todo: limitation: max line width is 1
     //CCLOG(@"v: %f", v);
     //glDisable(GL_LINE_SMOOTH); // does not exist in OpenGL 2.0?
     //may just need to draw a rectangle, which will be used for detecting touches anyway
-    
-//    for (int i = 0; i < [[self children] count] - 1; i++) {
-//        CGPoint p1 = ((CCNode*)[[self children] objectAtIndex:i]).position;
-//        CGPoint p2 = ((CCNode*)[[self children] objectAtIndex:i + 1]).position;
-//        ccDrawLine(p1, p2);
-//    }
-    
-    // TODO: STOPPED HERE
-    
     ccDrawColor4F(lineColor.r, lineColor.g, lineColor.b, lineColor.a);
-    
-    CGPoint p1, p2, bottomLeftPoint, topLeftPoint, topRightPoint, bottomRightPoint, tp;
-    CGFloat hWidth, hHeight, _xpos, _ypos, tX, tY, rad;
-    CGPoint vertices[4];
+    // draw a rectangle between each point
+    CGPoint p1, p2, vertices[4];
     for (int i = 0; i < [[self children] count] - 1; i++) {
-        
-        //if (i == 1) // todo: testing
-            //return;
-        
         p1 = ((CCNode*)[[self children] objectAtIndex:i]).position;
         p2 = ((CCNode*)[[self children] objectAtIndex:i + 1]).position;
-        //ccDrawLine(p1, p2);
-        
-        
-        // create angled rectangle between two points // todo: could create a single polygon
-        // http://www.cocos2d-iphone.org/forum/topic/17387
-        // also see CGAffineTransform
-            
-        // hWidth, hHeight = half the rectangle's width & height
-        hWidth = ccpDistance(p1, p2)/2;
-        hHeight = NODE_SIZE/2;
-        
-        // _xpos, _ypos = center position of the rectangle
-        //Midpoint AB = (x1 + x2) /2 , (y1 + y2)/2
-        _xpos = (p1.x + p2.x)/2;
-        _ypos = (p1.y + p2.y)/2;
-        
-        rad = -ccpAngle(p1, p2);
-        if (p1.x > p2.x) // drawing from right to left
-            rad = -rad;
-        CCLOG(@"rad: %f", rad);
-        
-        tX = -(hWidth * cosf(rad) - hHeight * sinf(rad) ) + _xpos;
-        tY = -(hWidth * sinf(rad) + hHeight * cosf(rad) ) + _ypos;
-        bottomLeftPoint = ccp(tX, tY);
-        
-        tX = -(hWidth * cosf(rad) + hHeight * sinf(rad) ) + _xpos;
-        tY = -(hWidth * sinf(rad) - hHeight * cosf(rad) ) + _ypos;
-        topLeftPoint = ccp(tX, tY);
-        
-        tX = (hWidth * cosf(rad) - hHeight * sinf(rad) ) + _xpos;
-        tY = (hWidth * sinf(rad) + hHeight * cosf(rad) ) + _ypos;
-        topRightPoint = ccp(tX, tY);
-        
-        tX = (hWidth * cosf(rad) + hHeight * sinf(rad) ) + _xpos;
-        tY = (hWidth * sinf(rad) - hHeight * cosf(rad) ) + _ypos;
-        bottomRightPoint = ccp(tX, tY);
         
         ccDrawColor4F(lineColor.r, lineColor.g, lineColor.b, lineColor.a);
-        
-        //ccDrawSolidRect(rp2, rp4, lineColor); // only use to draw non-angled rectangles
-        // CGRect is also useless
-        
-        vertices[0] = bottomLeftPoint;
-        vertices[1] = topLeftPoint;
-        vertices[2] = topRightPoint;
-        vertices[3] = bottomRightPoint;
+        //ccDrawLine(p1, p2);
+        [self getRectangleVerticesWithPoint:p1 point2:p2 arrayToStoreIn:vertices];
         ccDrawPoly(vertices, 4, YES);
         
-        ccDrawColor4F(0, 0, 1, 1);
-        ccDrawSolidCircle(bottomLeftPoint, 10, 90, 5, NO);
-        ccDrawSolidCircle(topLeftPoint, 10, 90, 5, NO);
-        ccDrawSolidCircle(topRightPoint, 10, 90, 5, NO);
-        ccDrawSolidCircle(bottomRightPoint, 10, 90, 5, NO);
+        if (IS_DEBUGGING) {
+            ccDrawColor4F(0, 0, 1, 1);
+            ccDrawSolidCircle(vertices[0], 10, 90, 5, NO);
+            ccDrawSolidCircle(vertices[1], 10, 90, 5, NO);
+            ccDrawSolidCircle(vertices[2], 10, 90, 5, NO);
+            ccDrawSolidCircle(vertices[3], 10, 90, 5, NO);
+        }
     }
     
     [super draw];
 }
 
+// returns an autorelease array with the 4 vertices
+- (void)getRectangleVerticesWithPoint:(CGPoint)p1 point2:(CGPoint)p2 arrayToStoreIn:(CGPoint *) a {
+    // create angled rectangle between two points // todo: could create a single polygon
+    // http://www.cocos2d-iphone.org/forum/topic/17387
+    // also see CGAffineTransform
+    
+    CGPoint bottomLeftPoint, topLeftPoint, topRightPoint, bottomRightPoint;
+    CGFloat hWidth, hHeight, _xpos, _ypos, tX, tY, rad;
+    
+    // hWidth, hHeight = half the rectangle's width & height
+    hWidth = ccpDistance(p1, p2)/2;
+    hHeight = NODE_SIZE/2;
+    
+    // _xpos, _ypos = center position of the rectangle
+    //Midpoint AB = (x1 + x2) /2 , (y1 + y2)/2
+    _xpos = (p1.x + p2.x)/2;
+    _ypos = (p1.y + p2.y)/2;
+    
+    rad = -ccpAngle(p1, p2);
+    if (p1.x > p2.x) // drawing from right to left
+        rad = -rad;
+    CCLOG(@"rad: %f", rad);
+    
+    tX = -(hWidth * cosf(rad) - hHeight * sinf(rad) ) + _xpos;
+    tY = -(hWidth * sinf(rad) + hHeight * cosf(rad) ) + _ypos;
+    bottomLeftPoint = ccp(tX, tY);
+    
+    tX = -(hWidth * cosf(rad) + hHeight * sinf(rad) ) + _xpos;
+    tY = -(hWidth * sinf(rad) - hHeight * cosf(rad) ) + _ypos;
+    topLeftPoint = ccp(tX, tY);
+    
+    tX = (hWidth * cosf(rad) - hHeight * sinf(rad) ) + _xpos;
+    tY = (hWidth * sinf(rad) + hHeight * cosf(rad) ) + _ypos;
+    topRightPoint = ccp(tX, tY);
+    
+    tX = (hWidth * cosf(rad) + hHeight * sinf(rad) ) + _xpos;
+    tY = (hWidth * sinf(rad) - hHeight * cosf(rad) ) + _ypos;
+    bottomRightPoint = ccp(tX, tY);
+    
+    //ccDrawSolidRect(rp2, rp4, lineColor); // only use to draw non-angled rectangles
+    // CGRect is also useless
+    
+    a[0] = topLeftPoint;
+    a[1] = topRightPoint;
+    a[2] = bottomRightPoint;
+    a[3] = bottomLeftPoint;
+}
 
 
 

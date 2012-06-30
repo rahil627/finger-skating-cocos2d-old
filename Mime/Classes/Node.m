@@ -68,10 +68,11 @@
             break;
     }
     
-    // if debug
-    ccDrawColor4F(1, 1, 1, 1);
-    p = ccp(p.x - 10/4, p.y - 10/4);
-    ccDrawSolidCircle(p, 10/2, 90, 50, NO);
+    if (IS_DEBUGGING) {
+        ccDrawColor4F(1, 1, 1, 1);
+        p = ccp(p.x - 10/4, p.y - 10/4);
+        ccDrawSolidCircle(p, 10/2, 90, 5, NO);
+    }
 }
 
 @end
