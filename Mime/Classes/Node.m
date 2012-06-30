@@ -64,7 +64,7 @@
             break;
             
         default:
-            CCLOGWARN(@"[Node draw] you forgot to set the node type!");
+            CCLOGWARN(@"[Node draw] you forgot to set the node type!"); // todo: initWithType
             break;
     }
     
