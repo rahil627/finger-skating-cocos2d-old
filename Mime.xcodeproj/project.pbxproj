@@ -136,8 +136,8 @@
 		5ABB2E341598FBA900BAFDFE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ABB2E331598FBA900BAFDFE /* AppDelegate.m */; };
 		5ABB2E371598FBA900BAFDFE /* HelloWorldLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ABB2E361598FBA900BAFDFE /* HelloWorldLayer.m */; };
 		5ABB2E451599034B00BAFDFE /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ABB2E441599034B00BAFDFE /* GameScene.m */; };
+		5ABB9F9F159EF01200E4C2C1 /* NodeGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ABB9F9E159EF01200E4C2C1 /* NodeGroup.m */; };
 		5ABC0092159A53C1005D298A /* circle.png in Resources */ = {isa = PBXBuildFile; fileRef = 5ABC0091159A53C1005D298A /* circle.png */; };
-		5ABC0098159A5B22005D298A /* NodeGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ABC0096159A5B22005D298A /* NodeGroup.m */; };
 		5ABD6DCB159B8F9E0097993D /* GameManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ABD6DCA159B8F9E0097993D /* GameManager.m */; };
 		5ABD6DD3159BEFEF0097993D /* Node.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ABD6DD2159BEFEF0097993D /* Node.m */; };
 /* End PBXBuildFile section */
@@ -410,9 +410,9 @@
 		5ABB2E361598FBA900BAFDFE /* HelloWorldLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HelloWorldLayer.m; sourceTree = "<group>"; };
 		5ABB2E431599034B00BAFDFE /* GameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameScene.h; path = ../../GameScene.h; sourceTree = "<group>"; };
 		5ABB2E441599034B00BAFDFE /* GameScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GameScene.m; path = ../../GameScene.m; sourceTree = "<group>"; };
+		5ABB9F9D159EF01200E4C2C1 /* NodeGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NodeGroup.h; sourceTree = "<group>"; };
+		5ABB9F9E159EF01200E4C2C1 /* NodeGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NodeGroup.m; sourceTree = "<group>"; };
 		5ABC0091159A53C1005D298A /* circle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = circle.png; path = ../../circle.png; sourceTree = "<group>"; };
-		5ABC0095159A5B22005D298A /* NodeGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NodeGroup.h; sourceTree = "<group>"; };
-		5ABC0096159A5B22005D298A /* NodeGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NodeGroup.m; sourceTree = "<group>"; };
 		5ABD6DC9159B8F9E0097993D /* GameManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameManager.h; sourceTree = "<group>"; };
 		5ABD6DCA159B8F9E0097993D /* GameManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameManager.m; sourceTree = "<group>"; };
 		5ABD6DD1159BEFEF0097993D /* Node.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Node.h; sourceTree = "<group>"; };
@@ -864,6 +864,8 @@
 		5ABB2E46159903B700BAFDFE /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				5ABB9F9D159EF01200E4C2C1 /* NodeGroup.h */,
+				5ABB9F9E159EF01200E4C2C1 /* NodeGroup.m */,
 				5ABD6DC9159B8F9E0097993D /* GameManager.h */,
 				5ABD6DCA159B8F9E0097993D /* GameManager.m */,
 				5ABB2E431599034B00BAFDFE /* GameScene.h */,
@@ -872,8 +874,6 @@
 				5ABB0FD1159ABD900091E2B4 /* Library.m */,
 				5ABD6DD1159BEFEF0097993D /* Node.h */,
 				5ABD6DD2159BEFEF0097993D /* Node.m */,
-				5ABC0095159A5B22005D298A /* NodeGroup.h */,
-				5ABC0096159A5B22005D298A /* NodeGroup.m */,
 				5ABB0FCA159A779A0091E2B4 /* NodeSuperGroup.h */,
 				5ABB0FCB159A779A0091E2B4 /* NodeSuperGroup.m */,
 			);
@@ -1059,11 +1059,11 @@
 				5ABB2E341598FBA900BAFDFE /* AppDelegate.m in Sources */,
 				5ABB2E371598FBA900BAFDFE /* HelloWorldLayer.m in Sources */,
 				5ABB2E451599034B00BAFDFE /* GameScene.m in Sources */,
-				5ABC0098159A5B22005D298A /* NodeGroup.m in Sources */,
 				5ABB0FCC159A779A0091E2B4 /* NodeSuperGroup.m in Sources */,
 				5ABB0FD2159ABD900091E2B4 /* Library.m in Sources */,
 				5ABD6DCB159B8F9E0097993D /* GameManager.m in Sources */,
 				5ABD6DD3159BEFEF0097993D /* Node.m in Sources */,
+				5ABB9F9F159EF01200E4C2C1 /* NodeGroup.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

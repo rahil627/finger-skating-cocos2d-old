@@ -9,6 +9,7 @@
 #import "NodeGroup.h"
 #import "Node.h"
 #import "GameManager.h"
+#import "Library.h"
 
 @implementation NodeGroup
 
@@ -46,8 +47,8 @@
     //glGetFloatv(GL_ALIASED_LINE_WIDTH_RANGE, &v); // todo: limitation: max line width is 1
     //CCLOG(@"v: %f", v);
     //glDisable(GL_LINE_SMOOTH); // does not exist in OpenGL 2.0?
-    //may just need to draw a rectangle, which will be used for detecting touches anyway
-    ccDrawColor4F(lineColor.r, lineColor.g, lineColor.b, lineColor.a);
+    // may just need to draw a rectangle, which will be used for detecting touches anyway
+    
     // draw a rectangle between each point
     CGPoint p1, p2, vertices[4];
     for (int i = 0; i < [[self children] count] - 1; i++) {
@@ -71,7 +72,7 @@
     [super draw];
 }
 
-// returns an autorelease array with the 4 vertices
+// pass in a C-array
 - (void)getRectangleVerticesWithPoint:(CGPoint)p1 point2:(CGPoint)p2 arrayToStoreIn:(CGPoint *) a {
     // create angled rectangle between two points // todo: could create a single polygon
     // http://www.cocos2d-iphone.org/forum/topic/17387
@@ -92,7 +93,6 @@
     rad = -ccpAngle(p1, p2);
     if (p1.x > p2.x) // drawing from right to left
         rad = -rad;
-    CCLOG(@"rad: %f", rad);
     
     tX = -(hWidth * cosf(rad) - hHeight * sinf(rad) ) + _xpos;
     tY = -(hWidth * sinf(rad) + hHeight * cosf(rad) ) + _ypos;
@@ -119,19 +119,15 @@
     a[3] = bottomLeftPoint;
 }
 
-
-
 #pragma mark - touch handlers
-- (void)onEnter
-{
+- (void)onEnter {
 	CCDirector *director =  [CCDirector sharedDirector];
     
 	[[director touchDispatcher] addTargetedDelegate:self priority:0 swallowsTouches:YES];
 	[super onEnter];
 }
 
-- (void)onExit
-{
+- (void)onExit {
 	CCDirector *director = [CCDirector sharedDirector];
     
 	[[director touchDispatcher] removeDelegate:self];
@@ -151,13 +147,15 @@
     // if line
     
     // if touch began on first node
+    CGPoint touchPoint = [self convertTouchToNodeSpaceAR:touch];
+    
     for (int i = 0; i < [[self children] count]; i++) {
         Node* n = (Node*)[[self children] objectAtIndex:i];
         
         if (n.type == kFirst) { // todo: optimize: just access the first child
             CGRect hitbox = CGRectMake(n.position.x - NODE_SIZE/2, n.position.y - NODE_SIZE/2, NODE_SIZE, NODE_SIZE);
             
-            if ((CGRectContainsPoint(hitbox, [self convertTouchToNodeSpaceAR:touch]))) {
+            if ((CGRectContainsPoint(hitbox, touchPoint))) {
                 CCLOG(@"first point touched!");
                 //[self removeFromParentAndCleanup:YES]; // if missed beginning point, change color
                 return YES;
@@ -182,19 +180,21 @@
     //CCLOG(@"stop touching me!");
     //[self removeFromParentAndCleanup:YES];
     
+    CGPoint touchPoint = [self convertTouchToNodeSpaceAR:touch];
+    
     // if touch is within the current node's hitbox or the current space between two nodes
-    // hrm...
-    // TODO: STOPPED HERE
     
     // sloppy implementation, checks entire nodegroup
-    CGFloat x, y, w, h;
+    CGPoint p1, p2, v[4];
+    float x[4], y[4];
+    CCNode* n;
     for (int i = 0; i < [[self children] count]; i++) {
-        Node* n = (Node*)[[self children] objectAtIndex:i];
+        n = (CCNode*)[[self children] objectAtIndex:i];
         
         // if touching node
         CGRect nodeHitbox = CGRectMake(n.position.x - NODE_SIZE/2, n.position.y - NODE_SIZE/2, NODE_SIZE, NODE_SIZE);
         
-        if ((CGRectContainsPoint(nodeHitbox, [self convertTouchToNodeSpaceAR:touch]))) {
+        if ((CGRectContainsPoint(nodeHitbox, touchPoint))) {
             //CCLOG(@"you're still touching a node in the nodegroup");
             return;
         }
@@ -204,18 +204,32 @@
         if ([[self children] count] == 1)
             return;
         
-        if (i == [[self children] count])
+        if (i == [[self children] count] - 1) {
+            CCLOG(@"you lose, good day sir!");
             return;
+        }
         
-        //Node* n2 = (Node*)[[self children] objectAtIndex:i + 1];
+        p1 = ((CCNode*)[[self children] objectAtIndex:i]).position;
+        p2 = ((CCNode*)[[self children] objectAtIndex:i + 1]).position;
         
-        //x = n.position.x
-        //CGRect lineHitbox = CGRectMake(<#CGFloat x#>, <#CGFloat y#>, <#CGFloat width#>, <#CGFloat height#>)
-        // would need to use pointInPoly
+        //ccDrawLine(p1, p2);
+        [self getRectangleVerticesWithPoint:p1 point2:p2 arrayToStoreIn:v];
         
+        
+        x[0] = v[0].x;
+        x[1] = v[1].x;
+        x[2] = v[2].x;
+        x[3] = v[3].x;
+        
+        y[0] = v[0].y;
+        y[1] = v[1].y;
+        y[2] = v[2].y;
+        y[3] = v[3].y;
+        
+        [Library IsPointInPolygonWithNumberOfVerticies:4 xVerticies:x yVerticies:y testPointX:touchPoint.x testPointY:touchPoint.y];
     }
     
-    //CCLOG(@"you lose, good day sir!");
+    CCLOG(@"you lose, good day sir!");
 }
 - (void)ccTouchEnded:(UITouch *)touch withEvent:(UIEvent *)event {
     

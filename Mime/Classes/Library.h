@@ -11,7 +11,10 @@
 
 @interface Library : NSObject
 
+// Objective-C functions
 + (BOOL)isOffScreenWithPoint:(CGPoint)p;
 + (BOOL)isOffScreenWithCCSprite:(CCSprite*)sprite;
 
+// C functions
++ (int)IsPointInPolygonWithNumberOfVerticies:(int)nvert xVerticies:(float *)vertx yVerticies:(float *)verty testPointX:(float)testx testPointY:(float)testy;
 @end
