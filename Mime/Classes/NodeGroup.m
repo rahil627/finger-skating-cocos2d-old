@@ -82,7 +82,7 @@
     CGFloat hWidth, hHeight, _xpos, _ypos, tX, tY, rad;
     
     // hWidth, hHeight = half the rectangle's width & height
-    hWidth = ccpDistance(p1, p2)/2;
+    hWidth = (ccpDistance(p1, p2)/2 > NODE_SIZE/2) ? ccpDistance(p1, p2)/2 : NODE_SIZE/2; // minimum width = node size
     hHeight = NODE_SIZE/2;
     
     // _xpos, _ypos = center position of the rectangle
