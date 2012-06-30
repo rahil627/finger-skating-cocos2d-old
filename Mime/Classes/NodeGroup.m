@@ -137,26 +137,16 @@
     return NO; // claim touch?
 }
 
-//- (BOOL)containsTouchLocation:(UITouch *)touch {
-//	CGPoint p = [self convertTouchToNodeSpaceAR:touch];
-//	CGRect r = [self rectInPixels];
-//	return CGRectContainsPoint(r, p);
-//}
-
 - (void)ccTouchMoved:(UITouch *)touch withEvent:(UIEvent *)event { // hmmmm, may be better to have a single touch and check multiple sprite groups
     
     if ([[self children] count] < 1)
         return;
     
-    //CCLOG(@"stop touching me!");
-    //[self removeFromParentAndCleanup:YES];
-    
     CGPoint touchPoint = [self convertTouchToNodeSpaceAR:touch];
     
-    // if touch is within the current node's hitbox or the current space between two nodes
-    
     // todo: sloppy implementation, checks entire nodegroup
-    CGPoint p, p1, p2, v[4];
+    // todo: if touch is within the current node's hitbox or the current space between two nodes
+    CGPoint p;
     for (int i = 0; i < [[self children] count]; i++) {
         p = ((CCNode*)[[self children] objectAtIndex:i]).position;
         
@@ -164,25 +154,26 @@
         CGRect nodeHitbox = CGRectMake(p.x - NODE_SIZE/2, p.y - NODE_SIZE/2, NODE_SIZE, NODE_SIZE);
         
         if ((CGRectContainsPoint(nodeHitbox, touchPoint))) {
-            //CCLOG(@"you're still touching a node in the nodegroup");
+            //CCLOG(@"touching a node");
             return;
         }
         
-        // if touching between two nodes
-        if ([[self children] count] == 1)
-            return;
-        
-        if (i == [[self children] count] - 1) {
-            CCLOG(@"you lose, good day sir!");
-            return;
-        }
-        
+    }
+    
+    if ([[self children] count] == 1)
+        return;
+    
+    // if touching between two nodes
+    CGPoint p1, p2, v[4];
+    for (int i = 0; i < [[self children] count] - 1; i++) {
         p1 = ((CCNode*)[[self children] objectAtIndex:i]).position;
         p2 = ((CCNode*)[[self children] objectAtIndex:i + 1]).position;
         
         [self getRectangleVerticesWithPoint1:p1 point2:p2 arrayToStoreIn:v];
-        if ([self isPointInRectangleWithVertices:v point:touchPoint])
+        if ([self isPointInRectangleWithVertices:v point:touchPoint]) {
+            //CCLOG(@"touching space between two nodes");
             return;
+        }
     }
     
     CCLOG(@"you lose, good day sir!");

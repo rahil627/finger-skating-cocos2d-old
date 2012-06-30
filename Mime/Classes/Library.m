@@ -10,6 +10,7 @@
 
 @implementation Library
 
+#pragma mark - objective-C functions
 + (BOOL)isOffScreenWithPoint:(CGPoint)p  {
     CGSize s = [[CCDirector sharedDirector] winSize];
     
@@ -28,6 +29,7 @@
     return false;
 }
 
+#pragma mark - C functions
 + (int)isPointInPolygonWithNumberOfVerticies:(int)nvert xVerticies:(float *)vertx yVerticies:(float *)verty testPointX:(float)testx testPointY:(float)testy {
 	int i, j, c = 0;
 	for (i = 0, j = nvert-1; i < nvert; j = i++) {

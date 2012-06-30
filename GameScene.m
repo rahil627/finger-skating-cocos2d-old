@@ -79,7 +79,6 @@
     
     if (!(CGRectContainsPoint(bottomTouchArea.textureRect, touchPoint)))
         return NO;
-    //return CGRectContainsPoint(r, [self convertTouchToNodeSpaceAR:touch]); //self.textureRect wasn't working correctly
     
     Node *node = [Node node];
     node.type = kFirst;
