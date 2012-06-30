@@ -58,7 +58,7 @@
     
     ccDrawColor4F(lineColor.r, lineColor.g, lineColor.b, lineColor.a);
     
-    CGPoint p1, p2, bottomLeftPoint, topLeftPoint, topRightPoint, bottomRightPoint;
+    CGPoint p1, p2, bottomLeftPoint, topLeftPoint, topRightPoint, bottomRightPoint, tp;
     CGFloat hWidth, hHeight, _xpos, _ypos, tX, tY, rad;
     CGPoint vertices[4];
     for (int i = 0; i < [[self children] count] - 1; i++) {
@@ -74,7 +74,7 @@
         // create angled rectangle between two points // todo: could create a single polygon
         // http://www.cocos2d-iphone.org/forum/topic/17387
         // also see CGAffineTransform
-        
+            
         // hWidth, hHeight = half the rectangle's width & height
         hWidth = ccpDistance(p1, p2)/2;
         hHeight = NODE_SIZE/2;
@@ -85,6 +85,8 @@
         _ypos = (p1.y + p2.y)/2;
         
         rad = -ccpAngle(p1, p2);
+        if (p1.x > p2.x) // drawing from right to left
+            rad = -rad;
         CCLOG(@"rad: %f", rad);
         
         tX = -(hWidth * cosf(rad) - hHeight * sinf(rad) ) + _xpos;
