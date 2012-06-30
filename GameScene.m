@@ -33,7 +33,7 @@
     [self addChild:nodeSuperGroup];
     
     CGSize ws = [[CCDirector sharedDirector] winSize];
-    CGRect bottomTouchAreaRectangle = CGRectMake(0, 0, ws.width, 50);
+    CGRect bottomTouchAreaRectangle = CGRectMake(0, 0, ws.width, 200);
     bottomTouchArea = [CCSprite spriteWithFile:@"white.png" rect:bottomTouchAreaRectangle];
     bottomTouchArea.color = ccc3(0, 255, 0);
     bottomTouchArea.opacity = 255/4;
@@ -43,7 +43,7 @@
     CGRect bottomCreationLineRect = CGRectMake(0, 0, ws.width, 5);
     CCSprite *bottomCreationLine = [CCSprite spriteWithFile:@"white.png" rect:bottomCreationLineRect];
     bottomCreationLine.color = ccc3(255, 0, 0);
-    bottomCreationLine.position = ccp(bottomCreationLine.contentSize.width/2, bottomCreationLine.contentSize.height/2 + 45);
+    bottomCreationLine.position = ccp(bottomCreationLine.contentSize.width/2, bottomCreationLine.contentSize.height/2 + bottomTouchArea.contentSize.height - 5);
     [self addChild:bottomCreationLine z:10];
     
     
@@ -83,7 +83,7 @@
     
     Node *node = [Node node];
     node.type = kFirst;
-    node.position = touchPoint;
+    node.position = ccp(touchPoint.x, bottomTouchArea.textureRect.size.height);
     currentNodeGroup = [[NodeGroup nodeGroup] retain];
     [nodeSuperGroup addChild:currentNodeGroup];
     [currentNodeGroup addChild:node];
@@ -97,7 +97,7 @@
     
     Node *node = [Node node];
     node.type = kMiddle;
-    node.position = ccp(touchPoint.x, 50);
+    node.position = ccp(touchPoint.x, bottomTouchArea.textureRect.size.height);
     [currentNodeGroup addChild:node];
 }
 

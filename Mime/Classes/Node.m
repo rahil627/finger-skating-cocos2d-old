@@ -23,7 +23,7 @@
 	if (!(self = [super init]))
 		return nil;
     
-    hitbox = CGRectMake(0, 0, 25, 25);
+    hitbox = CGRectMake(0, 0, NODE_SIZE, NODE_SIZE);
     type = -1;
     
     [self schedule: @selector(update:)];
@@ -49,27 +49,29 @@
     
     switch (type) {
         case kMiddle:
-            ccDrawColor4F(1, 1, 1, 1);
-            p = ccp(p.x - 10/4, p.y - 10/4);
-            ccDrawSolidCircle(p, 10/2, 90, 50, NO);
             break;
             
         case kFirst:
             ccDrawColor4F(0, 1, 0, 1);
-            p = ccp(p.x - 25/4, p.y - 25/4);
-            ccDrawSolidCircle(p, 25/2, 90, 50, NO);
+            p = ccp(p.x - NODE_SIZE/4, p.y - NODE_SIZE/4);
+            ccDrawSolidCircle(p, NODE_SIZE/2, 90, 50, NO);
             break;
             
         case kLast:
             ccDrawColor4F(1, 0, 0, 1);
-            p = ccp(p.x - 25/4, p.y - 25/4);
-            ccDrawSolidCircle(p, 25/2, 90, 50, NO);
+            p = ccp(p.x - NODE_SIZE/4, p.y - NODE_SIZE/4);
+            ccDrawSolidCircle(p, NODE_SIZE/2, 90, 50, NO);
             break;
             
         default:
             CCLOGWARN(@"[Node draw] you forgot to set the node type!");
             break;
     }
+    
+    // if debug
+    ccDrawColor4F(1, 1, 1, 1);
+    p = ccp(p.x - 10/4, p.y - 10/4);
+    ccDrawSolidCircle(p, 10/2, 90, 50, NO);
 }
 
 @end
